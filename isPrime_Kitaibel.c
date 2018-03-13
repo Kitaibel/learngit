@@ -4,28 +4,29 @@
 int main(int argc, char *argv[]) 
 {
 	long long int n,i;
+	printf("è¾“å…¥ä¸€ä¸ªæ­£æ•´æ•°ï¼š");
 	scanf("%lld",&n);
 	if(n==1)
 	{
-		printf("1²»ÊÇËØÊı");
-		exit(0);
+		printf("1ä¸æ˜¯ç´ æ•°");
+		return 0;
 	}
 	
 	if(n==2)
 	{
-		printf("2ÊÇËØÊı");
-		exit(0);
+		printf("2æ˜¯ç´ æ•°");
+		return 0;
 	}
 	
 	for(i=2;i<sqrt(n)+1;i++)
 	{
 		if(n%i==0)
 		{
-			printf("%lld²»ÊÇËØÊı",n);
-			exit(0);
+			printf("%lldä¸æ˜¯ç´ æ•°",n);
+			return 0;
 		}
 	}
 	
-	printf("%lldÊÇËØÊı",n);
+	printf("%lldæ˜¯ç´ æ•°",n);
 	return 0;
 }
