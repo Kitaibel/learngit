@@ -21,11 +21,11 @@ int main()
 	struct node *head;
 	head=NULL; //建一个空表 
 	head=creat(head);//创建单链表 
-//	head=obs(head);    //反向 
+//	head=obs(head);    //反向 ，但是序号不会改变 
 	print(head);   //输出链表的值 
-	a1=findfive(head);    //查找5
-	a2=findfive(head);    //再查找5
-	printf("%d %d",a1,a2);
+	a1=findfive(head);    //查找5的位置 
+	a2=findfive(head);    //再查找5的位置 
+	printf("%d %d",a1,a2);  //输出5的位置 
 	getchar();
     return 0;
 }
@@ -83,20 +83,20 @@ struct node *obs(struct node *head)
 	if(head==NULL)
 		return head;
 	head->next=NULL;
-	x1=temp->next;   //拿到下一个地址(此处第三个) 
+	x1=temp->next;   //取得下一个地址(此处第三个) 
 	temp->next=head;
 	while(1)
 	{
 		if(x1->next==NULL)
 		{
-			x1->next=temp;
-			temp=x1;
+			x1->next=temp;    //x1固定为最远位 
+			temp=x1;        //temp为操作位 
 			return temp;
 		}
 		x2=x1;
-		x1=x1->next;
+		x1=x1->next;       //x1固定为最远位 
 		x2->next=temp;
-		temp=x2;
+		temp=x2;      //temp为操作位 
 	}
 }
 
@@ -104,12 +104,12 @@ int findfive(struct node *head)
 {
 	struct node *temp;
 	temp=head;    //取头指针 
-	while(temp->next!=NULL)
+	while(temp->next!=NULL)     //遍历，直到剩下最后一个结构(否则程序会崩溃) 
 	{
 		if(temp->num==5 && temp->no>find5)
 		{
-			find5=temp->no;
-			return temp->no;
+			find5=temp->no;      //因为已知只找两次，获取值 
+			return temp->no;     //返回序号 
 		}
 		temp=temp->next;
 	}
